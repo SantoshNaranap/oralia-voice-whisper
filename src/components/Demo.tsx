@@ -78,17 +78,17 @@ const Demo = () => {
   };
 
   return (
-    <section id="demo" className="section bg-gray-50">
+    <section id="demo" className="section bg-dark-accent">
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
           Experience Oralia in Action
         </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <p className="text-gray-400 max-w-2xl mx-auto">
           Try interacting with our demo below to see how Oralia can help your website visitors.
         </p>
       </div>
       
-      <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+      <div className="max-w-3xl mx-auto bg-dark-card rounded-2xl shadow-lg overflow-hidden border border-gray-800">
         <div className="bg-oralia p-4 flex items-center justify-between">
           <h3 className="text-white font-medium">Oralia Assistant</h3>
           <div className="flex space-x-2">
@@ -101,31 +101,31 @@ const Demo = () => {
             <div
               key={message.id}
               className={`max-w-[80%] ${
-                message.sender === 'user' ? 'ml-auto bg-oralia/10 text-gray-800' : 'bg-gray-100 text-gray-600'
+                message.sender === 'user' ? 'ml-auto bg-oralia/20 text-gray-200' : 'bg-dark-accent text-gray-300'
               } p-4 rounded-xl`}
             >
               <p className="text-sm">{message.text}</p>
             </div>
           ))}
           {isTyping && (
-            <div className="bg-gray-100 text-gray-600 p-3 rounded-xl max-w-[50px]">
+            <div className="bg-dark-accent text-gray-300 p-3 rounded-xl max-w-[50px]">
               <div className="flex space-x-1">
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse delay-75"></div>
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse delay-150"></div>
+                <div className="w-2 h-2 bg-gray-500 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-gray-500 rounded-full animate-pulse delay-75"></div>
+                <div className="w-2 h-2 bg-gray-500 rounded-full animate-pulse delay-150"></div>
               </div>
             </div>
           )}
         </div>
         
-        <div className="p-4 border-t border-gray-200">
+        <div className="p-4 border-t border-gray-800">
           <div className="flex items-center space-x-2">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={handleKeyPress}
-              className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-oralia/50"
+              className="flex-1 bg-dark-muted border border-gray-700 text-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-oralia/50"
               placeholder="Type your message..."
             />
             <Button
@@ -141,7 +141,7 @@ const Demo = () => {
             <Button
               onClick={handleSend}
               disabled={!input.trim()}
-              className="bg-oralia hover:bg-oralia-dark disabled:bg-gray-300"
+              className="bg-oralia hover:bg-oralia-dark disabled:bg-gray-700"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5 text-white">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />

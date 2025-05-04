@@ -22,12 +22,12 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section className="section bg-gradient-to-b from-gray-50 to-white">
+    <section className="section bg-gradient-to-b from-dark-accent to-dark">
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
           Trusted by Innovative Companies
         </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <p className="text-gray-400 max-w-2xl mx-auto">
           See what our customers have to say about their experience with Oralia.
         </p>
       </div>
@@ -36,17 +36,17 @@ const Testimonials = () => {
         {testimonials.map((testimonial, index) => (
           <div 
             key={index} 
-            className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 relative"
+            className="bg-dark-card p-8 rounded-2xl shadow-md border border-gray-800 relative"
           >
             <div className="absolute -top-4 left-8 text-oralia text-5xl">"</div>
-            <p className="text-gray-700 mb-6 pt-6">{testimonial.quote}</p>
+            <p className="text-gray-300 mb-6 pt-6">{testimonial.quote}</p>
             <div className="flex items-center">
               <div className="w-10 h-10 bg-oralia/20 rounded-full flex items-center justify-center text-oralia font-semibold">
                 {testimonial.author.charAt(0)}
               </div>
               <div className="ml-3">
-                <h4 className="font-semibold">{testimonial.author}</h4>
-                <p className="text-sm text-gray-500">{testimonial.role}, {testimonial.company}</p>
+                <h4 className="font-semibold text-white">{testimonial.author}</h4>
+                <p className="text-sm text-gray-400">{testimonial.role}, {testimonial.company}</p>
               </div>
             </div>
           </div>

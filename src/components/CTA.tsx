@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 
 const CTA = () => {
   return (
-    <section className="py-20 px-6 md:px-10 bg-oralia">
+    <section className="py-20 px-6 md:px-10 bg-gradient-to-r from-oralia-dark to-oralia">
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
           Ready to give your website a voice?

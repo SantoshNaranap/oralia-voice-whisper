@@ -62,6 +62,12 @@ export default {
 					dark: '#6E59A5',
 					foreground: '#FFFFFF',
 				},
+				dark: {
+					DEFAULT: '#1A1F2C',
+					accent: '#2B3041',
+					muted: '#403E43',
+					card: '#221F26',
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',

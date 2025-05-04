@@ -59,12 +59,12 @@ const features = [
 
 const Features = () => {
   return (
-    <section id="features" className="section">
+    <section id="features" className="section bg-dark">
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
           Technical Excellence with a Human Touch
         </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <p className="text-gray-400 max-w-2xl mx-auto">
           Oralia combines cutting-edge AI technology with natural voice interaction to create a seamless, empathetic user experience.
         </p>
       </div>
@@ -73,13 +73,13 @@ const Features = () => {
         {features.map((feature, index) => (
           <div 
             key={index} 
-            className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:border-oralia/20 hover:shadow-md transition-all duration-300"
+            className="bg-dark-card p-6 rounded-2xl shadow-md border border-gray-800 hover:border-oralia/20 hover:shadow-lg transition-all duration-300"
           >
             <div className="text-oralia mb-4">
               {feature.icon}
             </div>
-            <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-            <p className="text-gray-600">{feature.description}</p>
+            <h3 className="text-xl font-semibold mb-2 text-white">{feature.title}</h3>
+            <p className="text-gray-400">{feature.description}</p>
           </div>
         ))}
       </div>
