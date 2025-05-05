@@ -1,5 +1,6 @@
 
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const CTA = () => {
   return (
@@ -16,7 +17,7 @@ const CTA = () => {
             Start Free Trial
           </Button>
           <Button variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-6">
-            Schedule Demo
+            <Link to="/mission">Learn Our Mission</Link>
           </Button>
         </div>
         <p className="text-white/70 mt-6">No credit card required. 14-day free trial.</p>
