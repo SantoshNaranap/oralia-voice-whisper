@@ -1,4 +1,7 @@
 
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+
 const features = [
   {
     title: "Voice Interaction",
@@ -58,31 +61,74 @@ const features = [
 ];
 
 const Features = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1
+  });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
   return (
     <section id="features" className="section bg-dark">
-      <div className="text-center mb-16">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.7 }}
+        className="text-center mb-16"
+        ref={ref}
+      >
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
           Technical Excellence with a Human Touch
         </h2>
         <p className="text-gray-400 max-w-2xl mx-auto">
           Oralia combines cutting-edge AI technology with natural voice interaction to create a seamless, empathetic user experience.
         </p>
-      </div>
+      </motion.div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <motion.div 
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+      >
         {features.map((feature, index) => (
-          <div 
+          <motion.div 
             key={index} 
-            className="bg-dark-card p-6 rounded-2xl shadow-md border border-gray-800 hover:border-oralia/20 hover:shadow-lg transition-all duration-300"
+            className="bg-dark-card p-6 rounded-2xl shadow-md border border-gray-800 hover:border-oralia/20 hover:shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-oralia/10"
+            variants={itemVariants}
           >
-            <div className="text-oralia mb-4">
+            <motion.div 
+              className="text-oralia mb-4"
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
               {feature.icon}
-            </div>
+            </motion.div>
             <h3 className="text-xl font-semibold mb-2 text-white">{feature.title}</h3>
             <p className="text-gray-400">{feature.description}</p>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };
