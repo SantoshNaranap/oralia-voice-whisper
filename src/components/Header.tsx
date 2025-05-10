@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ThemeToggle } from './ThemeToggle';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,7 +27,7 @@ const Header = () => {
 
   return (
     <motion.header 
-      className={`fixed w-full top-0 z-50 ${scrolled ? 'bg-dark/90' : 'bg-transparent'} backdrop-blur-md border-b ${scrolled ? 'border-gray-800' : 'border-transparent'} transition-all duration-300`}
+      className={`fixed w-full top-0 z-50 ${scrolled ? 'bg-dark/90 dark:bg-dark/90' : 'bg-transparent'} backdrop-blur-md border-b ${scrolled ? 'border-gray-800' : 'border-transparent'} transition-all duration-300`}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
@@ -41,7 +42,7 @@ const Header = () => {
             <div className="w-8 h-8 bg-oralia rounded-full flex items-center justify-center">
               <span className="text-white font-bold">O</span>
             </div>
-            <span className="font-bold text-xl text-white">Oralia</span>
+            <span className="font-bold text-xl text-white dark:text-white">Oralia</span>
           </Link>
         </motion.div>
         
@@ -72,6 +73,13 @@ const Header = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.6 }}
+          >
+            <ThemeToggle />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.7 }}
             whileHover={{ scale: 1.05 }}
           >
@@ -80,22 +88,25 @@ const Header = () => {
         </nav>
         
         {/* Mobile Menu Button */}
-        <motion.button 
-          className="md:hidden p-2 text-white"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          whileTap={{ scale: 0.9 }}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
-          </svg>
-        </motion.button>
+        <div className="md:hidden flex items-center space-x-2">
+          <ThemeToggle />
+          <motion.button 
+            className="p-2 text-white"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            whileTap={{ scale: 0.9 }}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+            </svg>
+          </motion.button>
+        </div>
       </div>
       
       {/* Mobile Navigation */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
-            className="md:hidden bg-dark-accent border-t border-gray-800"
+            className="md:hidden bg-dark-accent dark:bg-dark-accent border-t border-gray-800"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}

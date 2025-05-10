@@ -68,6 +68,12 @@ export default {
 					muted: '#403E43',
 					card: '#221F26',
 				},
+				light: {
+					DEFAULT: '#FFFFFF',
+					accent: '#F5F7FA',
+					muted: '#E5E7EB',
+					card: '#F9FAFB',
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
