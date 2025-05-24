@@ -57,22 +57,22 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				oralia: {
-					DEFAULT: '#9b87f5',
-					light: '#d6bcfa',
-					dark: '#6E59A5',
+					DEFAULT: '#10b981',
+					light: '#34d399',
+					dark: '#047857',
 					foreground: '#FFFFFF',
 				},
 				dark: {
-					DEFAULT: '#1A1F2C',
-					accent: '#2B3041',
-					muted: '#403E43',
-					card: '#221F26',
+					DEFAULT: '#0a0a0a',
+					accent: '#1a1a1a',
+					muted: '#262626',
+					card: '#171717',
 				},
 				light: {
 					DEFAULT: '#FFFFFF',
-					accent: '#F5F7FA',
-					muted: '#E5E7EB',
-					card: '#F9FAFB',
+					accent: '#f0fdf4',
+					muted: '#dcfce7',
+					card: '#f7fee7',
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
