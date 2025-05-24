@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -12,6 +11,14 @@ const Mission = () => {
         {/* Hero Statement */}
         <section className="py-24 px-6 md:px-10 bg-gradient-to-b from-dark to-dark-accent overflow-hidden relative">
           <div className="max-w-5xl mx-auto text-center">
+            {/* Oxford Origin Badge */}
+            <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 mb-8">
+              <div className="w-6 h-6 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center">
+                <span className="text-white text-xs font-bold">OX</span>
+              </div>
+              <span className="text-sm text-gray-300">Born from University of Oxford startup incubator</span>
+            </div>
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight tracking-tight">
               <span className="gradient-text">Intuitive communication ai</span> that completes a site user journey.
             </h1>

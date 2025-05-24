@@ -1,4 +1,3 @@
-
 const Footer = () => {
   return (
     <footer className="bg-dark-card text-gray-400">
@@ -11,9 +10,15 @@ const Footer = () => {
               </div>
               <span className="text-white font-bold text-xl">Oralia</span>
             </div>
-            <p className="text-gray-500 mb-6">
+            <p className="text-gray-500 mb-4">
               Voice-powered AI assistant that enhances website navigation with empathetic interactions.
             </p>
+            <div className="flex items-center gap-2 mb-6 text-sm text-gray-400">
+              <div className="w-5 h-5 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center">
+                <span className="text-white text-xs font-bold">OX</span>
+              </div>
+              <span>University of Oxford startup incubator</span>
+            </div>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-500 hover:text-oralia transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">

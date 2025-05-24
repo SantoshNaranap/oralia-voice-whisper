@@ -16,6 +16,19 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
+            {/* Oxford Badge */}
+            <motion.div 
+              className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 mb-6"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="w-6 h-6 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center">
+                <span className="text-white text-xs font-bold">OX</span>
+              </div>
+              <span className="text-sm text-gray-300">Born from University of Oxford startup incubator</span>
+            </motion.div>
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-white">
               Give your website a <span className="gradient-text">voice</span> with Oralia
             </h1>
