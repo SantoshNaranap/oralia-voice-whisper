@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
@@ -27,7 +26,9 @@ const Index = () => {
         <div id="features">
           <Features />
         </div>
-        <Verticals />
+        <div id="verticals">
+          <Verticals />
+        </div>
         <motion.section 
           className="py-24 md:py-32 px-6 md:px-10 bg-gradient-to-b from-dark-accent to-dark"
           initial={{ opacity: 0 }}

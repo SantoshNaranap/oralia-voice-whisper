@@ -48,7 +48,7 @@ const Header = () => {
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          {['Features', 'Mission', 'Try It', 'Integration'].map((item, index) => (
+          {['Features', 'Industries', 'Mission', 'Try It', 'Integration'].map((item, index) => (
             <motion.div
               key={item}
               initial={{ opacity: 0, y: -10 }}
@@ -62,7 +62,7 @@ const Header = () => {
                 </Link>
               ) : (
                 <a 
-                  href={`#${item.toLowerCase().replace(' ', '')}`} 
+                  href={item === 'Industries' ? "/#verticals" : `#${item.toLowerCase().replace(' ', '')}`} 
                   className="text-sm font-medium text-gray-300 hover:text-oralia transition-colors"
                 >
                   {item}
@@ -124,10 +124,21 @@ const Header = () => {
               >
                 Features
               </motion.a>
-              <motion.div
+              <motion.a 
+                href="/#verticals" 
+                className="block py-2 text-sm font-medium text-gray-300 hover:text-oralia" 
+                onClick={() => setIsMenuOpen(false)}
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
+                whileHover={{ x: 5 }}
+              >
+                Industries
+              </motion.a>
+              <motion.div
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.3 }}
                 whileHover={{ x: 5 }}
               >
                 <Link to="/mission" className="block py-2 text-sm font-medium text-gray-300 hover:text-oralia" onClick={() => setIsMenuOpen(false)}>
@@ -140,7 +151,7 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.3 }}
+                transition={{ delay: 0.4 }}
                 whileHover={{ x: 5 }}
               >
                 Try It
@@ -151,7 +162,7 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.4 }}
+                transition={{ delay: 0.5 }}
                 whileHover={{ x: 5 }}
               >
                 Integration
