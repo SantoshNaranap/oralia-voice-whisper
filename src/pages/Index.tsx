@@ -27,15 +27,15 @@ const Index = () => {
         <Features />
         <Verticals />
         <motion.section 
-          className="py-16 px-6 md:px-10 bg-gradient-to-b from-dark-accent to-dark"
+          className="py-24 md:py-32 px-6 md:px-10 bg-gradient-to-b from-dark-accent to-dark"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <div className="max-w-5xl mx-auto text-center">
+          <div className="max-w-6xl mx-auto text-center">
             <motion.h2 
-              className="text-3xl md:text-4xl font-bold mb-6 text-white"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight"
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
@@ -44,7 +44,7 @@ const Index = () => {
               On a mission to make the web accessible for everyone
             </motion.h2>
             <motion.p 
-              className="text-gray-300 text-lg mb-8 max-w-3xl mx-auto"
+              className="text-gray-300 text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed"
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
@@ -59,7 +59,7 @@ const Index = () => {
               transition={{ duration: 0.7, delay: 0.4 }}
               whileHover={{ scale: 1.05 }}
             >
-              <Button className="bg-oralia hover:bg-oralia-dark text-white transition-all duration-300">
+              <Button className="bg-oralia hover:bg-oralia-dark text-white px-8 py-6 text-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-oralia/20">
                 <Link to="/mission">Learn About Our Mission</Link>
               </Button>
             </motion.div>
