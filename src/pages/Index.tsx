@@ -24,7 +24,9 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <Features />
+        <div id="features">
+          <Features />
+        </div>
         <Verticals />
         <motion.section 
           className="py-24 md:py-32 px-6 md:px-10 bg-gradient-to-b from-dark-accent to-dark"
@@ -65,8 +67,12 @@ const Index = () => {
             </motion.div>
           </div>
         </motion.section>
-        <Demo />
-        <Integration />
+        <div id="tryit">
+          <Demo />
+        </div>
+        <div id="integration">
+          <Integration />
+        </div>
         <Testimonials />
         <CTA />
       </main>

@@ -135,7 +135,7 @@ const Header = () => {
                 </Link>
               </motion.div>
               <motion.a 
-                href="#demo" 
+                href="#tryit" 
                 className="block py-2 text-sm font-medium text-gray-300 hover:text-oralia" 
                 onClick={() => setIsMenuOpen(false)}
                 initial={{ x: -20, opacity: 0 }}
@@ -146,7 +146,7 @@ const Header = () => {
                 Try It
               </motion.a>
               <motion.a 
-                href="#integrate" 
+                href="#integration" 
                 className="block py-2 text-sm font-medium text-gray-300 hover:text-oralia" 
                 onClick={() => setIsMenuOpen(false)}
                 initial={{ x: -20, opacity: 0 }}
