@@ -2,6 +2,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
+import Verticals from "@/components/Verticals";
 import Demo from "@/components/Demo";
 import Integration from "@/components/Integration";
 import Testimonials from "@/components/Testimonials";
@@ -24,6 +25,7 @@ const Index = () => {
       <main>
         <Hero />
         <Features />
+        <Verticals />
         <motion.section 
           className="py-16 px-6 md:px-10 bg-gradient-to-b from-dark-accent to-dark"
           initial={{ opacity: 0 }}
