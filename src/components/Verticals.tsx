@@ -1,7 +1,7 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Heart, Building, Cart, BrainCircuit, Briefcase } from 'lucide-react';
+import { Heart, Building, ShoppingCart, BrainCircuit, Briefcase } from 'lucide-react';
 
 const verticals = [
   {
@@ -21,7 +21,7 @@ const verticals = [
   {
     title: "E-commerce",
     description: "Optimized for online stores with product recommendations, shopping assistance, and checkout support.",
-    icon: Cart,
+    icon: ShoppingCart,
     color: "from-purple-500 to-purple-600",
     features: ["Product Discovery", "Shopping Assistant", "Checkout Help"]
   },
