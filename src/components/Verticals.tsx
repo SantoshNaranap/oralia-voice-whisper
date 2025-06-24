@@ -9,35 +9,40 @@ const verticals = [
     description: "Specialized for medical websites with HIPAA compliance, medical terminology understanding, and patient-friendly navigation assistance.",
     icon: Heart,
     color: "from-red-500 to-red-600",
-    features: ["HIPAA Compliant", "Medical Terminology", "Patient Support"]
+    features: ["HIPAA Compliant", "Medical Terminology", "Patient Support"],
+    link: "/healthcare"
   },
   {
     title: "Insurance",
     description: "Tailored for insurance platforms with policy explanations, claims guidance, and regulatory compliance support.",
     icon: Building,
     color: "from-blue-500 to-blue-600",
-    features: ["Policy Guidance", "Claims Support", "Regulatory Compliant"]
+    features: ["Policy Guidance", "Claims Support", "Regulatory Compliant"],
+    link: "/insurance"
   },
   {
     title: "E-commerce",
     description: "Optimized for online stores with product recommendations, shopping assistance, and checkout support.",
     icon: ShoppingCart,
     color: "from-purple-500 to-purple-600",
-    features: ["Product Discovery", "Shopping Assistant", "Checkout Help"]
+    features: ["Product Discovery", "Shopping Assistant", "Checkout Help"],
+    link: "/ecommerce"
   },
   {
     title: "Neurodivergence",
     description: "Designed with accessibility in mind, featuring sensory-friendly interactions and cognitive load reduction.",
     icon: BrainCircuit,
     color: "from-green-500 to-green-600",
-    features: ["Sensory Friendly", "Cognitive Support", "Accessibility First"]
+    features: ["Sensory Friendly", "Cognitive Support", "Accessibility First"],
+    link: "/neurodivergence"
   },
   {
     title: "Enterprise",
     description: "Built for corporate environments with advanced security, custom integrations, and enterprise-grade features.",
     icon: Briefcase,
     color: "from-orange-500 to-orange-600",
-    features: ["Enterprise Security", "Custom Integration", "Advanced Analytics"]
+    features: ["Enterprise Security", "Custom Integration", "Advanced Analytics"],
+    link: "/enterprise"
   }
 ];
 
@@ -97,8 +102,9 @@ const Verticals = () => {
           return (
             <motion.div 
               key={index} 
-              className="bg-dark-card p-6 rounded-2xl shadow-md border border-gray-800 hover:border-oralia/20 hover:shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-oralia/10 relative overflow-hidden"
+              className="bg-dark-card p-6 rounded-2xl shadow-md border border-gray-800 hover:border-oralia/20 hover:shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-oralia/10 relative overflow-hidden cursor-pointer"
               variants={itemVariants}
+              onClick={() => window.location.href = vertical.link}
             >
               {/* Gradient background overlay */}
               <motion.div 

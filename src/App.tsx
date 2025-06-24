@@ -6,6 +6,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
 import Mission from "./pages/Mission";
+import Healthcare from "./pages/Healthcare";
+import Insurance from "./pages/Insurance";
+import Ecommerce from "./pages/Ecommerce";
+import Neurodivergence from "./pages/Neurodivergence";
+import Enterprise from "./pages/Enterprise";
 import NotFound from "./pages/NotFound";
 import { AnimatePresence } from "framer-motion";
 import { ThemeProvider } from "./components/ThemeProvider";
@@ -21,6 +26,11 @@ const AnimationLayout = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Index />} />
         <Route path="/mission" element={<Mission />} />
+        <Route path="/healthcare" element={<Healthcare />} />
+        <Route path="/insurance" element={<Insurance />} />
+        <Route path="/ecommerce" element={<Ecommerce />} />
+        <Route path="/neurodivergence" element={<Neurodivergence />} />
+        <Route path="/enterprise" element={<Enterprise />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
