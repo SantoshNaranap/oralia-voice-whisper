@@ -1,13 +1,15 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeToggle } from './ThemeToggle';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +26,25 @@ const Header = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const handleSectionNavigation = (sectionId: string) => {
+    if (location.pathname !== '/') {
+      // If not on homepage, navigate to homepage first, then scroll to section
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      // If on homepage, just scroll to section
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <motion.header 
@@ -61,12 +82,12 @@ const Header = () => {
                   {item}
                 </Link>
               ) : (
-                <a 
-                  href={item === 'Industries' ? "/#verticals" : `#${item.toLowerCase().replace(' ', '')}`} 
+                <button 
+                  onClick={() => handleSectionNavigation(item === 'Industries' ? 'verticals' : item.toLowerCase().replace(' ', ''))}
                   className="text-sm font-medium text-gray-300 hover:text-oralia transition-colors"
                 >
                   {item}
-                </a>
+                </button>
               )}
             </motion.div>
           ))}
@@ -113,28 +134,32 @@ const Header = () => {
             transition={{ duration: 0.3 }}
           >
             <div className="px-6 py-4 space-y-4">
-              <motion.a 
-                href="#features" 
-                className="block py-2 text-sm font-medium text-gray-300 hover:text-oralia" 
-                onClick={() => setIsMenuOpen(false)}
+              <motion.button 
+                onClick={() => {
+                  handleSectionNavigation('features');
+                  setIsMenuOpen(false);
+                }}
+                className="block py-2 text-sm font-medium text-gray-300 hover:text-oralia w-full text-left" 
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.1 }}
                 whileHover={{ x: 5 }}
               >
                 Features
-              </motion.a>
-              <motion.a 
-                href="/#verticals" 
-                className="block py-2 text-sm font-medium text-gray-300 hover:text-oralia" 
-                onClick={() => setIsMenuOpen(false)}
+              </motion.button>
+              <motion.button 
+                onClick={() => {
+                  handleSectionNavigation('verticals');
+                  setIsMenuOpen(false);
+                }}
+                className="block py-2 text-sm font-medium text-gray-300 hover:text-oralia w-full text-left" 
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
                 whileHover={{ x: 5 }}
               >
                 Industries
-              </motion.a>
+              </motion.button>
               <motion.div
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
@@ -145,28 +170,32 @@ const Header = () => {
                   Mission
                 </Link>
               </motion.div>
-              <motion.a 
-                href="#tryit" 
-                className="block py-2 text-sm font-medium text-gray-300 hover:text-oralia" 
-                onClick={() => setIsMenuOpen(false)}
+              <motion.button 
+                onClick={() => {
+                  handleSectionNavigation('tryit');
+                  setIsMenuOpen(false);
+                }}
+                className="block py-2 text-sm font-medium text-gray-300 hover:text-oralia w-full text-left" 
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.4 }}
                 whileHover={{ x: 5 }}
               >
                 Try It
-              </motion.a>
-              <motion.a 
-                href="#integration" 
-                className="block py-2 text-sm font-medium text-gray-300 hover:text-oralia" 
-                onClick={() => setIsMenuOpen(false)}
+              </motion.button>
+              <motion.button 
+                onClick={() => {
+                  handleSectionNavigation('integration');
+                  setIsMenuOpen(false);
+                }}
+                className="block py-2 text-sm font-medium text-gray-300 hover:text-oralia w-full text-left" 
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.5 }}
                 whileHover={{ x: 5 }}
               >
                 Integration
-              </motion.a>
+              </motion.button>
               <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
