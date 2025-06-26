@@ -30,7 +30,7 @@ const Hero = () => {
             </motion.div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-white">
-              Give your website a <span className="gradient-text">voice</span> with Oralia
+              The AI platform that makes your website <span className="gradient-text">intelligent</span>
             </h1>
             <motion.p 
               className="text-gray-300 text-lg md:text-xl mb-8"
@@ -38,7 +38,7 @@ const Hero = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.8 }}
             >
-              An AI assistant that helps users navigate your website through natural conversation and voice interaction, combining technical excellence with empathetic responses.
+              Oralia is an AI-powered platform that transforms how users interact with your website. From intelligent navigation to voice conversations, we combine cutting-edge AI technology with empathetic user experiences.
             </motion.p>
             <motion.div 
               className="flex flex-col sm:flex-row gap-4"

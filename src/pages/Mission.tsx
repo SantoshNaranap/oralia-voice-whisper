@@ -1,3 +1,4 @@
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -20,10 +21,10 @@ const Mission = () => {
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight tracking-tight">
-              <span className="gradient-text">Intuitive communication ai</span> that completes a site user journey.
+              <span className="gradient-text">AI-powered platform</span> that transforms website experiences
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-              Oralia is your site companion that makes the browsing journey simple and seamless, especially if you're elderly, disabled, non-english speaking, or just feeling overwhelmed with a site.
+              Oralia is an intelligent AI platform that makes websites more accessible and user-friendly. From voice interactions to smart navigation, we help every user find what they need.
             </p>
           </div>
           
@@ -81,11 +82,11 @@ const Mission = () => {
 
             <div className="text-center">
               <h3 className="text-2xl md:text-3xl font-semibold mb-8 text-white">
-                This is a huge problem businesses face...
+                This is where AI can make a difference...
               </h3>
               <div className="flex justify-center">
                 <Button className="bg-oralia hover:bg-oralia-dark text-white px-8 py-6 text-lg">
-                  See Our Solution
+                  See Our AI Solution
                 </Button>
               </div>
             </div>
@@ -97,28 +98,28 @@ const Mission = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-                How Oralia Transforms Accessibility
+                How Oralia's AI Platform Transforms Accessibility
               </h2>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                By combining voice interaction with AI-powered understanding, Oralia creates a more inclusive web for everyone.
+                By combining multiple AI capabilities including voice interaction, intelligent navigation, and contextual understanding, Oralia creates a more inclusive web for everyone.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="order-2 md:order-1">
-                <h3 className="text-2xl font-bold mb-4 text-white">Breaking Barriers to Access</h3>
+                <h3 className="text-2xl font-bold mb-4 text-white">AI-Powered Understanding</h3>
                 <p className="text-gray-300 mb-6">
-                  Oralia helps users navigate complex websites naturally, speaking directly to them and guiding them to the information they need.
+                  Our AI platform analyzes website content and user behavior to provide personalized assistance that adapts to individual needs and preferences.
                 </p>
                 
-                <h3 className="text-2xl font-bold mb-4 text-white">Supporting Diverse Needs</h3>
+                <h3 className="text-2xl font-bold mb-4 text-white">Voice as a Key Feature</h3>
                 <p className="text-gray-300 mb-6">
-                  From elderly users struggling with technology to those with disabilities or language barriers, Oralia provides personalized assistance.
+                  Voice interaction is one of our core AI features, enabling natural conversations that break down barriers for users with disabilities, language challenges, or technology difficulties.
                 </p>
                 
-                <h3 className="text-2xl font-bold mb-4 text-white">Reducing Frustration</h3>
+                <h3 className="text-2xl font-bold mb-4 text-white">Intelligent Assistance</h3>
                 <p className="text-gray-300 mb-6">
-                  By understanding user intent and providing immediate answers, Oralia reduces the time spent searching and prevents abandonment.
+                  Our AI doesn't just respond to questions—it proactively guides users, predicts their needs, and provides contextual help throughout their journey.
                 </p>
               </div>
               
