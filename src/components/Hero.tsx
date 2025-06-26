@@ -1,17 +1,114 @@
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+import { Mic, MicOff, Send } from 'lucide-react';
+
+interface Message {
+  id: number;
+  text: string;
+  sender: 'user' | 'ai';
+  timestamp: Date;
+}
 
 const Hero = () => {
   const wavesRef = useRef<HTMLDivElement>(null);
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      id: 1,
+      text: "Hi! I'm your AI assistant. I can help you navigate this website, answer questions about Oralia, or just have a conversation. What would you like to know?",
+      sender: 'ai',
+      timestamp: new Date()
+    }
+  ]);
+  const [input, setInput] = useState('');
+  const [isListening, setIsListening] = useState(false);
+  const [isAIThinking, setIsAIThinking] = useState(false);
+
+  const generateAIResponse = (userMessage: string): string => {
+    const lowerMessage = userMessage.toLowerCase();
+    
+    if (lowerMessage.includes('pricing') || lowerMessage.includes('cost') || lowerMessage.includes('price')) {
+      return "Our AI platform offers flexible pricing starting from $29/month for small websites. We have custom enterprise solutions for larger organizations. The pricing varies based on usage, features, and support level you need.";
+    }
+    
+    if (lowerMessage.includes('integration') || lowerMessage.includes('install') || lowerMessage.includes('setup')) {
+      return "Integrating Oralia is incredibly simple! Just add our JavaScript snippet to your website's header, and our AI will automatically start learning about your content. The entire setup process takes less than 5 minutes.";
+    }
+    
+    if (lowerMessage.includes('voice') || lowerMessage.includes('speak') || lowerMessage.includes('talk')) {
+      return "Yes! Voice interaction is one of our key AI features. Users can speak naturally with your website, and our AI responds with human-like conversation. It supports multiple languages and understands context, making browsing accessible for everyone.";
+    }
+    
+    if (lowerMessage.includes('features') || lowerMessage.includes('capabilities') || lowerMessage.includes('what can')) {
+      return "Our AI platform includes: intelligent navigation that guides users to what they need, voice conversations for natural interaction, empathetic responses that understand user emotions, smart analytics for insights, and seamless integration.";
+    }
+    
+    if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+      return "Hello! It's great to meet you. I'm here to help you understand how Oralia can transform your website into an intelligent, conversational platform. What aspect of our AI platform interests you most?";
+    }
+    
+    return "That's an interesting question! Our AI platform is designed to understand and respond to a wide variety of inquiries. I can help you learn more about Oralia's features, integration process, pricing, or how we make websites more accessible. What would you like to explore?";
+  };
+
+  const handleSendMessage = (messageText: string) => {
+    if (!messageText.trim()) return;
+
+    const userMessage: Message = {
+      id: messages.length + 1,
+      text: messageText,
+      sender: 'user',
+      timestamp: new Date()
+    };
+
+    setMessages(prev => [...prev, userMessage]);
+    setInput('');
+    setIsAIThinking(true);
+
+    setTimeout(() => {
+      const aiResponse: Message = {
+        id: messages.length + 2,
+        text: generateAIResponse(messageText),
+        sender: 'ai',
+        timestamp: new Date()
+      };
+      
+      setMessages(prev => [...prev, aiResponse]);
+      setIsAIThinking(false);
+    }, 1000 + Math.random() * 1500);
+  };
+
+  const handleVoiceToggle = () => {
+    setIsListening(!isListening);
+    
+    if (!isListening) {
+      setTimeout(() => {
+        const voiceMessages = [
+          "Tell me about your AI platform features",
+          "How does voice interaction work?",
+          "What makes Oralia different?",
+          "Can you help with website navigation?"
+        ];
+        const randomMessage = voiceMessages[Math.floor(Math.random() * voiceMessages.length)];
+        setInput(randomMessage);
+        setIsListening(false);
+      }, 2000);
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage(input);
+    }
+  };
   
   return (
     <section className="pt-32 pb-20 md:pt-40 md:pb-32 px-6 md:px-10 overflow-hidden relative bg-gradient-to-b from-dark to-dark-accent">
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+        <div className="flex flex-col lg:flex-row items-start justify-between gap-12">
           <motion.div 
-            className="md:w-1/2 max-w-2xl"
+            className="lg:w-1/2 max-w-2xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -30,7 +127,7 @@ const Hero = () => {
             </motion.div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-white">
-              The AI platform that makes your website <span className="gradient-text">intelligent</span>
+              The AI platform that makes your website <span className="gradient-text">conversational</span>
             </h1>
             <motion.p 
               className="text-gray-300 text-lg md:text-xl mb-8"
@@ -38,7 +135,7 @@ const Hero = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.8 }}
             >
-              Oralia is an AI-powered platform that transforms how users interact with your website. From intelligent navigation to voice conversations, we combine cutting-edge AI technology with empathetic user experiences.
+              Oralia transforms websites into intelligent, conversational platforms. Users can talk to your website like a human - asking questions, getting help, and navigating naturally through voice and text.
             </motion.p>
             <motion.div 
               className="flex flex-col sm:flex-row gap-4"
@@ -56,14 +153,14 @@ const Hero = () => {
           </motion.div>
           
           <motion.div 
-            className="md:w-1/2 relative"
+            className="lg:w-1/2 relative"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
           >
-            <div className="w-full aspect-square max-w-md mx-auto relative animate-float">
+            <div className="w-full max-w-lg mx-auto relative">
               <motion.div 
-                className="absolute inset-0 bg-gradient-to-br from-oralia/20 to-oralia-dark/20 rounded-full blur-3xl"
+                className="absolute inset-0 bg-gradient-to-br from-oralia/20 to-oralia-dark/20 rounded-3xl blur-3xl"
                 animate={{ 
                   scale: [1, 1.1, 1],
                   opacity: [0.5, 0.7, 0.5]
@@ -74,52 +171,93 @@ const Hero = () => {
                   repeatType: "reverse"
                 }}
               ></motion.div>
-              <div className="relative bg-dark-card rounded-3xl shadow-xl overflow-hidden border border-gray-800 p-8">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex space-x-2">
-                    <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-                    <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                    <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+              
+              {/* Live Conversational Demo */}
+              <div className="relative bg-dark-card rounded-3xl shadow-2xl overflow-hidden border border-gray-800">
+                {/* Header */}
+                <div className="bg-oralia p-4 flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">O</span>
+                    </div>
+                    <div>
+                      <h3 className="text-white font-semibold">Oralia AI</h3>
+                      <p className="text-white/80 text-xs">Try conversing with your website</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <span className="text-white/80 text-xs">Live</span>
                   </div>
                 </div>
-                
-                <div className="space-y-4">
-                  <motion.div 
-                    className="bg-dark-accent p-4 rounded-xl max-w-[80%]"
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.8, duration: 0.5 }}
-                  >
-                    <p className="text-sm text-gray-300">How can I help you today?</p>
-                  </motion.div>
+
+                {/* Messages */}
+                <div className="h-80 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-dark-card to-dark-muted">
+                  {messages.map((message) => (
+                    <motion.div
+                      key={message.id}
+                      className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div
+                        className={`max-w-[85%] p-3 rounded-2xl ${
+                          message.sender === 'user'
+                            ? 'bg-oralia text-white'
+                            : 'bg-dark-accent text-gray-200'
+                        }`}
+                      >
+                        <p className="text-sm">{message.text}</p>
+                      </div>
+                    </motion.div>
+                  ))}
                   
-                  <motion.div 
-                    className="bg-oralia/20 p-4 rounded-xl ml-auto max-w-[80%]"
-                    initial={{ x: 20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 1.3, duration: 0.5 }}
-                  >
-                    <p className="text-sm text-gray-300">I need help finding the pricing page</p>
-                  </motion.div>
-                  
-                  <motion.div 
-                    className="bg-dark-accent p-4 rounded-xl max-w-[80%]"
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 1.8, duration: 0.5 }}
-                  >
-                    <p className="text-sm text-gray-300">I'd be happy to help you find the pricing information! You can access our pricing page by clicking on the "Pricing" tab in the navigation menu at the top of the page, or I can take you there directly if you'd like.</p>
-                  </motion.div>
+                  {isAIThinking && (
+                    <motion.div
+                      className="flex justify-start"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                    >
+                      <div className="bg-dark-accent text-gray-200 p-3 rounded-2xl">
+                        <div className="flex space-x-1">
+                          <div className="w-2 h-2 bg-oralia rounded-full animate-pulse"></div>
+                          <div className="w-2 h-2 bg-oralia rounded-full animate-pulse delay-75"></div>
+                          <div className="w-2 h-2 bg-oralia rounded-full animate-pulse delay-150"></div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
                 </div>
-                
-                <div className="mt-6 flex items-center gap-2 justify-center">
-                  <div ref={wavesRef} className="flex items-center gap-1">
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <div 
-                        key={i}
-                        className={`w-1 bg-oralia rounded-full h-6 origin-bottom animate-wave-${i}`}
-                      ></div>
-                    ))}
+
+                {/* Input */}
+                <div className="p-4 border-t border-gray-800 bg-dark-card">
+                  <div className="flex items-center space-x-2">
+                    <textarea
+                      value={input}
+                      onChange={(e) => setInput(e.target.value)}
+                      onKeyPress={handleKeyPress}
+                      placeholder="Ask me anything about Oralia..."
+                      className="flex-1 bg-dark-muted border border-gray-700 text-gray-200 rounded-lg px-3 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-oralia/50 max-h-20"
+                      rows={1}
+                    />
+                    <Button
+                      onClick={handleVoiceToggle}
+                      className={`p-2 rounded-full transition-all duration-300 ${
+                        isListening 
+                          ? 'bg-red-500 hover:bg-red-600 animate-pulse' 
+                          : 'bg-oralia/20 hover:bg-oralia/40 text-oralia'
+                      }`}
+                    >
+                      {isListening ? <MicOff className="w-4 h-4 text-white" /> : <Mic className="w-4 h-4" />}
+                    </Button>
+                    <Button
+                      onClick={() => handleSendMessage(input)}
+                      disabled={!input.trim()}
+                      className="bg-oralia hover:bg-oralia-dark disabled:bg-gray-700 p-2 rounded-full"
+                    >
+                      <Send className="w-4 h-4 text-white" />
+                    </Button>
                   </div>
                 </div>
               </div>
