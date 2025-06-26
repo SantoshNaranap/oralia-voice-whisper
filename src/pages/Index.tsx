@@ -1,3 +1,4 @@
+
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
@@ -7,6 +8,7 @@ import Integration from "@/components/Integration";
 import Testimonials from "@/components/Testimonials";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import ConversationalAI from "@/components/ConversationalAI";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -78,6 +80,7 @@ const Index = () => {
         <CTA />
       </main>
       <Footer />
+      <ConversationalAI />
     </motion.div>
   );
 };
