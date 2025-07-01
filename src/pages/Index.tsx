@@ -32,15 +32,18 @@ const Index = () => {
           <Verticals />
         </div>
         <motion.section 
-          className="py-24 md:py-32 px-6 md:px-10 bg-gradient-to-b from-dark-accent to-dark"
+          className="py-24 md:py-32 px-6 md:px-10 bg-gradient-to-b from-dark via-dark-accent to-dark"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <div className="max-w-6xl mx-auto text-center">
+          <div className="max-w-6xl mx-auto text-center relative">
+            {/* Background decoration for smoother transition */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-oralia/5 to-transparent rounded-3xl blur-3xl" />
+            
             <motion.h2 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight relative z-10"
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
@@ -49,7 +52,7 @@ const Index = () => {
               On a mission to make the web accessible for everyone
             </motion.h2>
             <motion.p 
-              className="text-gray-300 text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed"
+              className="text-gray-300 text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed relative z-10"
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
@@ -63,6 +66,7 @@ const Index = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.4 }}
               whileHover={{ scale: 1.05 }}
+              className="relative z-10"
             >
               <Button className="bg-oralia hover:bg-oralia-dark text-white px-8 py-6 text-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-oralia/20">
                 <Link to="/mission">Learn About Our Mission</Link>
