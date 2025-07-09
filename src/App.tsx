@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
 import Mission from "./pages/Mission";
+import Blog from "./pages/Blog";
 import Healthcare from "./pages/Healthcare";
 import Insurance from "./pages/Insurance";
 import Ecommerce from "./pages/Ecommerce";
@@ -26,6 +27,7 @@ const AnimationLayout = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Index />} />
         <Route path="/mission" element={<Mission />} />
+        <Route path="/blog" element={<Blog />} />
         <Route path="/healthcare" element={<Healthcare />} />
         <Route path="/insurance" element={<Insurance />} />
         <Route path="/ecommerce" element={<Ecommerce />} />

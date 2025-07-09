@@ -69,7 +69,7 @@ const Header = () => {
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          {['Features', 'Industries', 'Mission', 'Try It', 'Integration'].map((item, index) => (
+          {['Features', 'Industries', 'Mission', 'Blog', 'Try It', 'Integration'].map((item, index) => (
             <motion.div
               key={item}
               initial={{ opacity: 0, y: -10 }}
@@ -79,6 +79,10 @@ const Header = () => {
             >
               {item === 'Mission' ? (
                 <Link to="/mission" className="text-sm font-medium text-gray-300 hover:text-oralia transition-colors">
+                  {item}
+                </Link>
+              ) : item === 'Blog' ? (
+                <Link to="/blog" className="text-sm font-medium text-gray-300 hover:text-oralia transition-colors">
                   {item}
                 </Link>
               ) : (
@@ -170,6 +174,16 @@ const Header = () => {
                   Mission
                 </Link>
               </motion.div>
+              <motion.div
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.4 }}
+                whileHover={{ x: 5 }}
+              >
+                <Link to="/blog" className="block py-2 text-sm font-medium text-gray-300 hover:text-oralia" onClick={() => setIsMenuOpen(false)}>
+                  Blog
+                </Link>
+              </motion.div>
               <motion.button 
                 onClick={() => {
                   handleSectionNavigation('tryit');
@@ -178,7 +192,7 @@ const Header = () => {
                 className="block py-2 text-sm font-medium text-gray-300 hover:text-oralia w-full text-left" 
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.4 }}
+                transition={{ delay: 0.5 }}
                 whileHover={{ x: 5 }}
               >
                 Try It
@@ -191,7 +205,7 @@ const Header = () => {
                 className="block py-2 text-sm font-medium text-gray-300 hover:text-oralia w-full text-left" 
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.5 }}
+                transition={{ delay: 0.6 }}
                 whileHover={{ x: 5 }}
               >
                 Integration
