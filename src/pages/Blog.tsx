@@ -8,7 +8,7 @@ import { Calendar, Clock, ArrowRight } from "lucide-react";
 const blogPosts = [
   {
     id: 1,
-    title: "The Future of Conversational AI in Healthcare",
+    title: "Speakeasy AI Post 1: What the heck is an LLM",
     excerpt: "A Large Language Model (LLM) is an artificial intelligence system trained on vast amounts of text data to understand and generate human-like language, enabling natural conversations and complex reasoning tasks.",
     date: "2024-01-15",
     readTime: "5 min read",
