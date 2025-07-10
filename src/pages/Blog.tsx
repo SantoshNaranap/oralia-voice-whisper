@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { Calendar, Clock, ArrowRight, Upload, Video } from "lucide-react";
 
 const blogPosts = [
   {
@@ -13,7 +13,7 @@ const blogPosts = [
     date: "2024-01-15",
     readTime: "5 min read",
     category: "Healthcare",
-    author: "Dr. Sarah Chen",
+    author: "Alex",
     image: "/placeholder.svg"
   },
   {
@@ -68,6 +68,24 @@ const Blog = () => {
           >
             Discover the latest in conversational AI, accessibility, and how we're making the web more inclusive
           </motion.p>
+
+          {/* Video Upload Area */}
+          <motion.div
+            className="max-w-2xl mx-auto mt-12 p-8 border-2 border-dashed border-gray-600 rounded-lg bg-dark-accent/30 hover:border-oralia/50 transition-colors"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+          >
+            <div className="text-center">
+              <Video className="w-12 h-12 mx-auto mb-4 text-gray-400" />
+              <h3 className="text-xl font-semibold mb-2 text-white">Upload Video Content</h3>
+              <p className="text-gray-400 mb-6">Share your insights or demos with our community</p>
+              <Button className="bg-oralia hover:bg-oralia-dark text-white">
+                <Upload className="w-4 h-4 mr-2" />
+                Choose Video File
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </section>
 
