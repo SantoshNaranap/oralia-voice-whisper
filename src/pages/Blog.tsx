@@ -68,24 +68,6 @@ const Blog = () => {
           >
             Discover the latest in conversational AI, accessibility, and how we're making the web more inclusive
           </motion.p>
-
-          {/* Video Upload Area */}
-          <motion.div
-            className="max-w-2xl mx-auto mt-12 p-8 border-2 border-dashed border-gray-600 rounded-lg bg-dark-accent/30 hover:border-oralia/50 transition-colors"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-          >
-            <div className="text-center">
-              <Video className="w-12 h-12 mx-auto mb-4 text-gray-400" />
-              <h3 className="text-xl font-semibold mb-2 text-white">Upload Video Content</h3>
-              <p className="text-gray-400 mb-6">Share your insights or demos with our community</p>
-              <Button className="bg-oralia hover:bg-oralia-dark text-white">
-                <Upload className="w-4 h-4 mr-2" />
-                Choose Video File
-              </Button>
-            </div>
-          </motion.div>
         </div>
       </section>
 
@@ -133,7 +115,7 @@ const Blog = () => {
                     {post.excerpt}
                   </p>
                   
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between mb-4">
                     <span className="text-sm text-gray-400">By {post.author}</span>
                     <Button 
                       variant="ghost" 
@@ -143,6 +125,21 @@ const Blog = () => {
                       Read More <ArrowRight className="w-4 h-4 ml-1" />
                     </Button>
                   </div>
+
+                  {/* Video Upload Area - only show for the first post (Alex's post) */}
+                  {post.author === "Alex" && (
+                    <div className="mt-4 p-4 border-2 border-dashed border-gray-600 rounded-lg bg-dark-accent/30 hover:border-oralia/50 transition-colors">
+                      <div className="text-center">
+                        <Video className="w-8 h-8 mx-auto mb-2 text-gray-400" />
+                        <h4 className="text-sm font-semibold mb-1 text-white">Upload Video Content</h4>
+                        <p className="text-xs text-gray-400 mb-3">Share your insights or demos</p>
+                        <Button size="sm" className="bg-oralia hover:bg-oralia-dark text-white text-xs">
+                          <Upload className="w-3 h-3 mr-1" />
+                          Choose Video
+                        </Button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </motion.article>
             ))}
